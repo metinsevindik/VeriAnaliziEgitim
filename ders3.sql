@@ -71,3 +71,42 @@ on s.ProductID=p.ProductID
 select distinct(ProductID) from Sales.SalesOrderDetail 
 
 select * from Production.Product
+
+
+----------------- Store Procedure ----------------------------------
+
+
+-- Prosedür çalıştırır
+exec kisiEkle 'Metin','Sevindik','5455151515'
+
+-- Döngü yapılır 
+declare @count int
+declare @isim nvarchar(50)
+set @count=1
+while (@count<10)
+begin
+	print 'Döngü ' + convert(varchar, @count)
+	set @count=@count+1
+
+	set @isim='Öğrenci,' + convert(varchar, @count)
+	exec kisiEkle @isim,'Sevindik','5455151515'
+end 
+
+
+SELECT * FROM Ogrenci
+
+--Convert örnek
+select convert(int, '2') as 'Rakam', convert(nvarchar, 2) as 'Yazı'
+
+--View oluştur
+create view basariliOgrenciler as 
+select top 5 * from ogrenci
+
+
+-- Viewler tablo gibidir 
+-- StoreProcedure ler çalıştırılır
+select * from basariliOgrenciler -- View
+exec kisiEkle --Store Procedure
+
+
+
