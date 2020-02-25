@@ -75,6 +75,28 @@ select * from Production.Product
 
 ----------------- Store Procedure ----------------------------------
 
+USE [VeriAnalizi]
+GO
+/****** Object:  StoredProcedure [dbo].[kisiEkle]    Script Date: 25.02.2020 20:52:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[kisiEkle] 
+@ad nvarchar(50),
+@soyad nvarchar(50),
+@tc nvarchar(11)
+ as
+insert into Ogrenci(Ad,Soyad,TCNo) 
+             values(@ad,@soyad,@tc)
+	     
+	     
+create procedure kisiekle2 as 
+insert into Ogrenci(Ad,Soyad,TCNo) values('Procedure2','Kişi','123456789')
+
+
+-- Çalıştırmak için
+Exec kisiekle
 
 -- Prosedür çalıştırır
 exec kisiEkle 'Metin','Sevindik','5455151515'
